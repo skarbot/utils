@@ -1,0 +1,14 @@
+default:
+  api_key: 'f3e88d88aae414ea72a762xx4a84a63a'
+  time_period: 15
+  url: https://www.toggl.com/api/v8/time_entries
+  tag: read
+  filter: '.*'
+
+redmine:
+  tag: readmine
+  filter:
+
+jira:
+  tag: jira
+  filter:
