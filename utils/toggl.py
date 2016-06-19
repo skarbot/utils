@@ -1,5 +1,5 @@
 """
-Extract time log entries from https://toggl.com
+Manage time log entries from https://toggl.com
 """
 import re
 import json
@@ -52,9 +52,9 @@ class Connect(object):
                 is_valid = False
             if ignore_marked and self.tag_as_read in each_data.get('tags', list()):
                 is_valid = False
-
             if is_valid:
                 return_data.append(each_data)
+
         return return_data
 
     def get_time_logs(self, ignore_marked=True):
@@ -113,20 +113,16 @@ class Connect(object):
         return request_object
 
     def mark_as_read(self, data):
-        """Refine time entries to once corresponding to redmine tickets"""
-        time_entries = self.get_time_logs()
+        """Mark toggl time log as read
 
-        for each_time_entry in time_entries.json():
-            description = each_time_entry.get('description')
-            if description and description.startswith('#'):
-                if 'marked' in each_time_entry.get('tags', []):
-                    continue
-                data = each_time_entry
-                if 'tags' in data.keys():
-                    data['tags'].append('marked')
-                else:
-                    data['tags'] = ['marked']
-                self.update(data)
+        *data* dictionary containing a single log entry
+
+        """
+        if 'tags' in data.keys() and self.tag_as_read not in data['tags']:
+            data['tags'].append(self.tag_as_read)
+        else:
+            data['tags'] = ['marked']
+        return self.update(data)
 
 
 if __name__ == '__main__':
