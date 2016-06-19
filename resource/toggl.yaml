@@ -1,5 +1,5 @@
 default:
-  api_key: 'f3e88d88aae414ea72a762xx4a84a63a'
+  api_key: ''
   time_period: 15
   url: https://www.toggl.com/api/v8/time_entries
   tag: read
@@ -7,8 +7,8 @@ default:
 
 redmine:
   tag: readmine
-  filter:
+  filter: '\d{1,6}'
 
 jira:
   tag: jira
-  filter:
+  filter: '\w{3}-\d{1,4}'
