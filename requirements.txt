@@ -2,3 +2,4 @@ requests
 pytest
 PyYaml
 tzlocal
+pycodestyle
