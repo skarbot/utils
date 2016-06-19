@@ -61,6 +61,7 @@ class RequestPut(object):
         """Decode json data"""
         return json.loads(self.data)['time_entry']
 
+
 def test_initialisation_with_incorrect_key():
     with pytest.raises(KeyError) as error:
         toggl.Connect('invalid_key')

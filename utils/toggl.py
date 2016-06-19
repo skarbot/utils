@@ -24,11 +24,11 @@ class Connect(object):
         with open(join(dirname(__file__), '../resource/toggl.yaml')) as config_file:
             config_data = yaml.load(config_file)
 
-        if not config:
-            self.config = config_data['default']
-        else:
+        self.config = config_data['default']
+
+        if config:
             if config_data.get(config):
-                self.config = config_data['default'].update(config_data[config])
+                self.config.update(config_data[config])
             else:
                 raise KeyError('Failed to load config {0}'.format(config))
 
