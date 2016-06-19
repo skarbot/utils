@@ -99,9 +99,7 @@ class Connect(object):
         *data* toggl entry log to be updated
 
         """
-        old_id = data.get('id')
-        data.pop('id')
-        url = '{0}/{1}'.format(self.url, old_id)
+        url = '{0}/{1}'.format(self.url, data.get('id'))
         request_object = requests.put(
             url,
             auth=(self.api_key, 'api_token'),
@@ -121,11 +119,11 @@ class Connect(object):
         if 'tags' in data.keys() and self.tag_as_read not in data['tags']:
             data['tags'].append(self.tag_as_read)
         else:
-            data['tags'] = ['marked']
+            data['tags'] = [self.tag_as_read]
         return self.update(data)
 
 
 if __name__ == '__main__':
     c = Connect()
-    entr = c.get_time_logs()
-    print entr
+    entr = c.get_time_logs(ignore_marked=False)
+    c.mark_as_read(entr[0])
