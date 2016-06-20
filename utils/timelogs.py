@@ -40,4 +40,3 @@ def update_jira(url, username, password):
         # Compute time in hours and round to two decimal places
         time_in_hours = round(each_log['duration']/(60*60), 2)
         jira.add_worklog(issue, time_in_hours, comment='Updated using Jira API')
-
