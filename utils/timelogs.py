@@ -7,7 +7,7 @@ import logging
 from jira import JIRA
 from jira.exceptions import JIRAError
 
-import toggl
+from . import toggl
 
 
 def update_jira(url, username, password):
