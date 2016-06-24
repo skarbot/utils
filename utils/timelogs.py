@@ -2,15 +2,20 @@
 Update time entries for Jira and redmine
 """
 from __future__ import division
+from os.path import dirname, join
 import logging
 
+import yaml
 from jira import JIRA
 from jira.exceptions import JIRAError
 
 from . import toggl
 
+CONFIG = yaml.load(
+    open(join(dirname(__file__), '../resource/timelogs.yaml')))
 
-def update_jira(url, username, password):
+
+def update_jira(username, password):
     """Update time logs in Jira
 
     Current implementation uses basic authentication,
@@ -22,6 +27,7 @@ def update_jira(url, username, password):
     *password* for Jira authentication
 
     """
+    url = CONFIG.get('jira')['url']
     jira = JIRA(
         options={'server': url},
         basic_auth=(username, password))
