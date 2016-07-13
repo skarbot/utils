@@ -7,4 +7,4 @@ Utils
 
 This package contains a number of tools to help me with day to day activities. Package includes:
 
-        * JIRA-toggl connector: This is commnad line utility to sync time-log entries from Toggl.com to Jira
+* JIRA-toggl connector: This is commnad line utility to sync time-log entries from Toggl.com to Jira
