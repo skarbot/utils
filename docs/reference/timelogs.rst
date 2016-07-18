@@ -2,3 +2,4 @@
 ------------------------
 
 .. automodule:: utils.timelogs
+    :members:

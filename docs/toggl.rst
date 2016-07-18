@@ -1,4 +1,4 @@
-Toggl connector
+Toggl Connector
 ================
 
 

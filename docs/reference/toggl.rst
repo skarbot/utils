@@ -2,3 +2,6 @@
 -----------------------
 
 .. automodule:: utils.toggl
+
+.. autoclass:: Connect
+    :members:
